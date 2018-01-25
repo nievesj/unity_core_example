@@ -1,0 +1,6 @@
+[submodule "Assets/Plugins/VSCode"]
+	path = Assets/Plugins/VSCode
+	url = https://github.com/nievesj/VSCode.git
+[submodule "Assets/Plugins/_Core"]
+	path = Assets/Plugins/_Core
+url=https://github.com/nievesj/unity-core-project.git
