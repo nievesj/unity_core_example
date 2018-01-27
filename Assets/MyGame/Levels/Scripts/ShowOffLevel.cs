@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Core.Assets;
 using Core.LevelLoaderService;
@@ -19,6 +20,7 @@ namespace TheAwesomeGame
 		Poller<Ball> poller;
 		IAssetService assetService;
 		Ball ballPrefab;
+		CompositeDisposable disposables = new CompositeDisposable();
 
 		protected override void Awake()
 		{
@@ -45,6 +47,12 @@ namespace TheAwesomeGame
 			});
 		}
 
+		protected override void Start()
+		{
+			base.Start();
+			StartCoroutine(Spawner(1));
+		}
+
 		protected void OnWindowClosed(UIWindow window)
 		{
 			if (window is UITitleScreenWindow)
@@ -57,16 +65,13 @@ namespace TheAwesomeGame
 		{
 			if (window is UIShowOffWindowHud)
 			{
-				(window as UIShowOffWindowHud).spawningSpeed
+				(window as UIShowOffWindowHud).OnSpawningSpeedChanged
 					.Subscribe(value =>
 					{
-						//TODO: reference is lingering even after being destroyed, workaround until fix is found
-						if (this)
-						{
-							StopAllCoroutines();
-							StartCoroutine(Spawner(value));
-						}
-					});
+						StopAllCoroutines();
+						StartCoroutine(Spawner(value));
+					})
+					.AddTo(disposables);
 
 				(window as UIShowOffWindowHud).OnResetPool
 					.Subscribe(OnResetPool);
@@ -101,6 +106,8 @@ namespace TheAwesomeGame
 
 		protected override void OnDestroy()
 		{
+			disposables.Dispose();
+
 			if (poller != null)
 				poller.Destroy();
 		}

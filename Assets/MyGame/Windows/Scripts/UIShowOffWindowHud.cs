@@ -18,7 +18,8 @@ namespace TheAwesomeGame
 
 		ILevelLoaderService levelLoader;
 
-		public ReactiveProperty<float> spawningSpeed = new ReactiveProperty<float>();
+		protected Subject<float> onSpawningSpeedChanged = new Subject<float>();
+		public IObservable<float> OnSpawningSpeedChanged { get { return onSpawningSpeedChanged; } }
 
 		protected Subject<int> onResetPool = new Subject<int>();
 		public IObservable<int> OnResetPool { get { return onResetPool; } }
@@ -26,8 +27,9 @@ namespace TheAwesomeGame
 		public override void Initialize(IUIService svc)
 		{
 			base.Initialize(svc);
-			spawningSpeed.Value = 1;
+
 			levelLoader = ServiceLocator.GetService<ILevelLoaderService>();
+
 		}
 
 		public void BackToTitleOnClick()
@@ -92,7 +94,7 @@ namespace TheAwesomeGame
 		public void OnSpawningSpeedSliderChange(Text text)
 		{
 			text.text = string.Format("{0:0.00}", spawningSpeedSlider.value);
-			spawningSpeed.Value = spawningSpeedSlider.value;
+			onSpawningSpeedChanged.OnNext(spawningSpeedSlider.value);
 		}
 
 		public void CreateResetPool()
