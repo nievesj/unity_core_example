@@ -46,7 +46,7 @@ namespace TheAwesomeGame
 			Close()
 				.Subscribe(window =>
 				{
-					levelLoader.LoadLevel(Constants.Levels.START_SCREEN_LEVEL);
+					levelLoader.LoadLevel(Constants.Levels.START_SCREEN_LEVEL).Subscribe();
 				});
 		}
 
@@ -57,7 +57,10 @@ namespace TheAwesomeGame
 				if (uiService.IsWindowOpen(Constants.Windows.UI_RIGHT_WINDOW))
 					uiService.GetOpenWindow(Constants.Windows.UI_RIGHT_WINDOW).Close();
 
-				uiService.OpenWindow(Constants.Windows.UI_TOP_WINDOW);
+				if (uiService.IsWindowOpen(Constants.Windows.UI_BOTTOM_WINDOW))
+					uiService.GetOpenWindow(Constants.Windows.UI_BOTTOM_WINDOW).Close();
+
+				uiService.OpenWindow(Constants.Windows.UI_TOP_WINDOW).Subscribe();
 			}
 		}
 
@@ -68,7 +71,10 @@ namespace TheAwesomeGame
 				if (uiService.IsWindowOpen(Constants.Windows.UI_RIGHT_WINDOW))
 					uiService.GetOpenWindow(Constants.Windows.UI_RIGHT_WINDOW).Close();
 
-				uiService.OpenWindow(Constants.Windows.UI_BOTTOM_WINDOW);
+				if (uiService.IsWindowOpen(Constants.Windows.UI_TOP_WINDOW))
+					uiService.GetOpenWindow(Constants.Windows.UI_TOP_WINDOW).Close();
+
+				uiService.OpenWindow(Constants.Windows.UI_BOTTOM_WINDOW).Subscribe();
 			}
 		}
 
@@ -76,13 +82,14 @@ namespace TheAwesomeGame
 		{
 			if (!uiService.IsWindowOpen(Constants.Windows.UI_RIGHT_WINDOW))
 			{
+
 				if (uiService.IsWindowOpen(Constants.Windows.UI_TOP_WINDOW))
 					uiService.GetOpenWindow(Constants.Windows.UI_TOP_WINDOW).Close();
 
 				if (uiService.IsWindowOpen(Constants.Windows.UI_BOTTOM_WINDOW))
 					uiService.GetOpenWindow(Constants.Windows.UI_BOTTOM_WINDOW).Close();
 
-				uiService.OpenWindow(Constants.Windows.UI_RIGHT_WINDOW);
+				uiService.OpenWindow(Constants.Windows.UI_RIGHT_WINDOW).Subscribe();
 			}
 		}
 

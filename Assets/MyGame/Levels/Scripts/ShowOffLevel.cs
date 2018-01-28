@@ -33,7 +33,7 @@ namespace TheAwesomeGame
 			uiService.OpenWindow(Constants.Windows.UI_SHOW_OFF_WINDOW_HUD)
 				.Subscribe(window =>
 				{
-					//TODO: This observable is not returning a subscription, not sure why... :(
+					//FIXME: This observable is not returning a subscription, not sure why... :(
 					Debug.Log("Window " + window.name + " opened.");
 				});
 
