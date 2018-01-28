@@ -17,7 +17,7 @@ namespace TheAwesomeGame
 		Transform spawner;
 
 		float spawningSpeed = 1;
-		Pooler<Ball> poller;
+		Pooler<Ball> pooler;
 		IAssetService assetService;
 		Ball ballPrefab;
 		CompositeDisposable disposables = new CompositeDisposable();
@@ -36,8 +36,8 @@ namespace TheAwesomeGame
 
 			assetService.GetAndLoadAsset<Ball>(bundleNeeded).Subscribe(loadedBall =>
 			{
-				ballPrefab = loadedBall as Ball;
-				poller = new Pooler<Ball>(ballPrefab.gameObject, 1);
+				ballPrefab = loadedBall;
+				pooler = new Pooler<Ball>(loadedBall.gameObject, 1);
 			});
 		}
 
@@ -74,8 +74,8 @@ namespace TheAwesomeGame
 
 		void OnResetPool(int size)
 		{
-			if (poller != null)
-				poller.ResizePool(size);
+			if (pooler != null)
+				pooler.ResizePool(size);
 		}
 
 		IEnumerator Spawner(float time)
@@ -83,7 +83,7 @@ namespace TheAwesomeGame
 			while (enabled)
 			{
 				yield return new WaitForSeconds(time);
-				var ball = poller.Pop();
+				var ball = pooler.Pop();
 				if (ball)
 				{
 					ball.Initialize();
@@ -92,7 +92,7 @@ namespace TheAwesomeGame
 					ball.hasCollided.Subscribe(collided =>
 					{
 						if (collided)
-							poller.Push(ball);
+							pooler.Push(ball);
 					});
 				}
 			}
@@ -100,11 +100,14 @@ namespace TheAwesomeGame
 
 		protected override void OnDestroy()
 		{
+			if (pooler != null)
+			{
+				pooler.Destroy();
+				pooler = null;
+			}
+
 			assetService.UnloadAsset(ballPrefab.name, true);
 			disposables.Dispose();
-
-			if (poller != null)
-				poller.Destroy();
 		}
 	}
 }
