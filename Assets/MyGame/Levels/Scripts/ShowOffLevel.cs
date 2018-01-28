@@ -29,15 +29,9 @@ namespace TheAwesomeGame
 			assetService = ServiceLocator.GetService<IAssetService>();
 			uiService.OnWindowClosed.Subscribe(OnWindowClosed);
 			uiService.OnWindowOpened.Subscribe(OnWindowOpened);
+			uiService.OpenWindow(Constants.Windows.UI_SHOW_OFF_WINDOW_HUD).Subscribe();
 
-			uiService.OpenWindow(Constants.Windows.UI_SHOW_OFF_WINDOW_HUD)
-				.Subscribe(window =>
-				{
-					//FIXME: This observable is not returning a subscription, not sure why... :(
-					Debug.Log("Window " + window.name + " opened.");
-				});
-
-			BundleNeeded bundleNeeded = new BundleNeeded(AssetCategoryRoot.Windows,
+			BundleNeeded bundleNeeded = new BundleNeeded(AssetCategoryRoot.Prefabs,
 				Constants.Assets.ASSET_BALL.ToLower(), Constants.Assets.ASSET_BALL.ToLower());
 
 			assetService.GetAndLoadAsset<Ball>(bundleNeeded).Subscribe(loadedBall =>
@@ -106,6 +100,7 @@ namespace TheAwesomeGame
 
 		protected override void OnDestroy()
 		{
+			assetService.UnloadAsset(ballPrefab.name, true);
 			disposables.Dispose();
 
 			if (poller != null)

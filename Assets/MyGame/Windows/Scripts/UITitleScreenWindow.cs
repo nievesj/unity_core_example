@@ -24,11 +24,7 @@ namespace TheAwesomeGame
 			Close()
 				.Subscribe(window =>
 				{
-					levelLoader.LoadLevel(Constants.Levels.SHOW_OFF_LEVEL)
-						.Subscribe(levelLoader =>
-						{
-							Debug.Log("haleluuuu");
-						});
+					levelLoader.LoadLevel(Constants.Levels.SHOW_OFF_LEVEL).Subscribe();
 				});
 		}
 	}
