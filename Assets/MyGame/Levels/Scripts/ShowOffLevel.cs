@@ -17,7 +17,7 @@ namespace TheAwesomeGame
 		Transform spawner;
 
 		float spawningSpeed = 1;
-		Poller<Ball> poller;
+		Pooler<Ball> poller;
 		IAssetService assetService;
 		Ball ballPrefab;
 		CompositeDisposable disposables = new CompositeDisposable();
@@ -37,7 +37,7 @@ namespace TheAwesomeGame
 			assetService.GetAndLoadAsset<Ball>(bundleNeeded).Subscribe(loadedBall =>
 			{
 				ballPrefab = loadedBall as Ball;
-				poller = new Poller<Ball>(ballPrefab.gameObject, 1);
+				poller = new Pooler<Ball>(ballPrefab.gameObject, 1);
 			});
 		}
 
