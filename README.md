@@ -31,8 +31,28 @@ Asset Service is the service in charge of loading asset bundles. The configurati
 	* Location where the asset bundles are stored on the cloud
 * Cache Asset Bundles?
 	* Toggle this if you want to cache the asset bundles on device. This will also cache the .manifest files on the Application.persistentDataPath path, and refresh them every 5 days, by default.
-	
+
 ![Asset Service Options](http://www.josemnieves.com/unity/images/assetservice.png)
 
+Asset Bundle Organization
+---
+The asset bundle directory organization is tied to the enum AssetCategoryRoot:
 
+    public enum AssetCategoryRoot
+	{
+		None,
+		Configuration,
+		Services,
+		Levels,
+		SceneContent,
+		GameContent,
+		Windows,
+		Audio,
+		Prefabs
+	}
 
+![Asset Bundle Organization](http://www.josemnieves.com/unity/images/aborg.png)
+
+The service will also automagically detect the platform it's running on, and use that to get the asset bundles from the web in the following order: 
+
+![Cloud Asset Bundle Structure](http://www.josemnieves.com/unity/images/webab.png)
