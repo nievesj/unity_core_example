@@ -1,0 +1,42 @@
+ManifestFileVersion: 0
+CRC: 2967886611
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4b59642b36cf7e9b11b48344f9360881
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3cc2ef907a85c4591cffce6f66913284
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9fdf3bd2c4e60450ab21aa428cfa859f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/MyGame/Windows/Prefabs/UIShowOffWindowHud.prefab
+Dependencies: []

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1411418272
+CRC: 1341262263
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 524a857aca7057b2c2eb7e21fccbbff1
+    Hash: ac562d170b1c187764fc11c6088d8f4a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b57c5ccdc26234aad27a74130bb5d9cd
+    Hash: bf74bcf337ce675f6b40d163f19b75d6
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -41,6 +41,6 @@ Assets:
 - Assets/MyGame/_CoreConfig/CoreServiceConfig.asset
 - Assets/Plugins/_Core/_CoreConfigExample/CoreServiceConfig.asset
 Dependencies:
-- D:/Unity/unity_core_example/AssetBundles/StandaloneWindows64/services/assetservice
-- D:/Unity/unity_core_example/AssetBundles/StandaloneWindows64/services/levelloaderservice
-- D:/Unity/unity_core_example/AssetBundles/StandaloneWindows64/services/controlservice
+- /Users/josenieves/Unity/unity_core_example/AssetBundles/iOS/services/assetservice
+- /Users/josenieves/Unity/unity_core_example/AssetBundles/iOS/services/levelloaderservice
+- /Users/josenieves/Unity/unity_core_example/AssetBundles/iOS/services/controlservice

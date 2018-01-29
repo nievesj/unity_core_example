@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 1110471985
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8ce9555d23bd717fb3603c40ff947b4d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 40e5f29896fa8d02a11aef9ec6541988
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 7b59971c8fc05491c9a5fd1bffc12224, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Plugins/_Core/_CoreConfigExample/LevelLoaderService.asset
+- Assets/MyGame/_CoreConfig/LevelLoaderService.asset
+Dependencies: []

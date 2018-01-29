@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 2986750142
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 21b3def15426bab1dbf32d5f15077d44
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 45ae4fcc5acc037ce2e18531566cc0f7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 072d0d018b68d4bfc937008c98501c23, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 17d9178ca8c044323af38d395a7b46df, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/MyGame/Levels/Prefabs/ShowOffLevel.prefab
+Dependencies: []

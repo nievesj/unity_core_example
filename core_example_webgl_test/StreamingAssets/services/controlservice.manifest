@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 3292767855
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 31ae4261b90075b801987c009b3bb812
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f3fe686050bf049ee9a3ff3b9ebbfea2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9ec1e7146b2424195ad529d50c0adf45, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dcc8b62a3576c461db330c1df8bcdd3a, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/MyGame/_CoreConfig/ControlService.asset
+- Assets/Plugins/_Core/_CoreConfigExample/ControlService.asset
+Dependencies: []

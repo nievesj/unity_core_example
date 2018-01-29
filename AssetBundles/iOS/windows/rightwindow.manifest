@@ -1,0 +1,40 @@
+ManifestFileVersion: 0
+CRC: 2861609363
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 58df16d1ac970d7774c37800df87365c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c17edac6fafb41a5780dc84853492fc2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4a20d6bac01874d3ba1b7020a7605686, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/MyGame/Windows/Prefabs/RightWindow.prefab
+Dependencies: []
