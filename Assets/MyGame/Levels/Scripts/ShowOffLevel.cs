@@ -31,7 +31,7 @@ namespace TheAwesomeGame
 			uiService.OnWindowOpened.Subscribe(OnWindowOpened);
 			uiService.OpenWindow(Constants.Windows.UI_SHOW_OFF_WINDOW_HUD).Subscribe();
 
-			BundleNeeded bundleNeeded = new BundleNeeded(AssetCategoryRoot.Prefabs,
+			BundleRequest bundleNeeded = new BundleRequest(AssetCategoryRoot.Prefabs,
 				Constants.Assets.ASSET_BALL.ToLower(), Constants.Assets.ASSET_BALL.ToLower());
 
 			assetService.GetAndLoadAsset<Ball>(bundleNeeded).Subscribe(loadedBall =>
