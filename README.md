@@ -31,6 +31,7 @@ Asset Service is the service in charge of loading asset bundles. The configurati
 	* Location where the asset bundles are stored on the cloud
 * Cache Asset Bundles?
 	* Toggle this if you want to cache the asset bundles on device. This will also cache the .manifest files on the Application.persistentDataPath path, and refresh them every 5 days, by default.
+	
 ![Asset Service Options](http://www.josemnieves.com/unity/images/assetservice.png)
 
 
