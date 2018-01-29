@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: AssetService
   m_EditorClassIdentifier: 
   assetBundlesURL: http://www.josemnieves.com/unity_core_example_bundles/
-  useStreamingAssets: 1
+  useStreamingAssets: 0
   useCache: 1
   manifestCachePeriod: 5
