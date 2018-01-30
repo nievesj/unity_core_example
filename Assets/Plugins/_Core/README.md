@@ -14,6 +14,7 @@ _Core is a collection utilities and libraries to help speed up development in Un
 	* Observable events for when a window is opened or closed
 	* Transition animations 
 * Basic audio system
+* Mouse / Touch input control
 * Pooler tool
 * Base game starting point ([Example Project](https://github.com/nievesj/unity_core_example))
 
@@ -36,7 +37,7 @@ Dependencies
 _Core depends on the the following components
 * [LeanTween](https://github.com/dentedpixel/LeanTween)
 * [UniRx](https://github.com/neuecc/UniRx) (Reactive Extensions for Unity) Most of the _Core functionality is wrapped around Observables. 
-* [AssetBundles-Browser](https://github.com/Unity-Technologies/AssetBundles-Browser) Unity's tool for building and organizing asset bundles. This is included in the project as a Git Submodule and it may need to be pulled the first time. 
+* [AssetBundles-Browser](https://github.com/Unity-Technologies/AssetBundles-Browser) Unity's tool for building and organizing asset bundles. 
 
 Which platforms are compatible?
 ---
