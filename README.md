@@ -8,9 +8,7 @@ WebGL test:  http://www.josemnieves.com/unity/core_example_webgl_test/
 
 Setup
 ---
-This project contains the _Core library as a git submodule, after cloning, the submodule needs to be pulled into your project too. 
-
-Once cloned, go to Assets -> MyGame and open the scene CoreGame.
+This project contains the _Core library as a git subtree, after cloning the repo go to Assets -> MyGame and open the scene CoreGame. This will be your starting point. 
 
 Asset Bundles
 ---
