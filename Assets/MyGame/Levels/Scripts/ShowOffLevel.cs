@@ -29,15 +29,17 @@ namespace TheAwesomeGame
 		{
 			base.Awake();
 
-			//Get service references and bubscribe to window events.
+			//Get service references and subscribe to window events.
 			assetService = ServiceLocator.GetService<IAssetService>();
 			uiService.OnWindowClosed.Subscribe(OnWindowClosed);
 			uiService.OnWindowOpened.Subscribe(OnWindowOpened);
+
+			//Open 'hud' (for the example the hud is just the left panel window) 
 			uiService.OpenWindow(Constants.Windows.UI_SHOW_OFF_WINDOW_HUD).Subscribe();
 
 			//Define bundle to be requested
 			BundleRequest bundleNeeded = new BundleRequest(AssetCategoryRoot.Prefabs,
-				Constants.Assets.ASSET_BALL.ToLower(), Constants.Assets.ASSET_BALL.ToLower());
+				Constants.Assets.ASSET_BALL, Constants.Assets.ASSET_BALL);
 
 			//Request ball asset
 			assetService.GetAndLoadAsset<Ball>(bundleNeeded).Subscribe(loadedBall =>
