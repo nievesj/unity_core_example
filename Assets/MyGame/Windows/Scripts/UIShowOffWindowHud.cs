@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 namespace TheAwesomeGame
 {
+	/// <summary>
+	/// This window is the left panel open during the game demo.
+	/// </summary>
 	public class UIShowOffWindowHud : UIWindow
 	{
 		[SerializeField]
@@ -27,9 +30,7 @@ namespace TheAwesomeGame
 		public override void Initialize(IUIService svc)
 		{
 			base.Initialize(svc);
-
 			levelLoader = ServiceLocator.GetService<ILevelLoaderService>();
-
 		}
 
 		public void BackToTitleOnClick()
@@ -82,7 +83,6 @@ namespace TheAwesomeGame
 		{
 			if (!uiService.IsWindowOpen(Constants.Windows.UI_RIGHT_WINDOW))
 			{
-
 				if (uiService.IsWindowOpen(Constants.Windows.UI_TOP_WINDOW))
 					uiService.GetOpenWindow(Constants.Windows.UI_TOP_WINDOW).Close();
 

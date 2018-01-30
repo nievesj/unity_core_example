@@ -10,7 +10,7 @@ namespace TheAwesomeGame
 		[SerializeField]
 		Light light;
 
-		public ReactiveProperty<bool> hasCollided;
+		public ReactiveProperty<bool> hasCollided; //Whenever .Value is changed an event is triggered.
 		bool collided = false;
 		Rigidbody rigidbody;
 		Vector3 newPos;
@@ -18,6 +18,7 @@ namespace TheAwesomeGame
 
 		void Awake()
 		{
+			//cache position
 			newPos = transform.position;
 			newRot = transform.rotation;
 		}
@@ -42,6 +43,8 @@ namespace TheAwesomeGame
 			if (!collided)
 			{
 				collided = true;
+
+				//Start timer to pop into the pool
 				StartCoroutine(Collided());
 			}
 		}
@@ -50,11 +53,13 @@ namespace TheAwesomeGame
 		{
 			yield return new WaitForSeconds(Random.Range(2.5f, 4));
 
+			//Changing the value of the ReactiveProperty triggers an event. 
 			hasCollided.Value = collided;
 		}
 
 		void OnDestroy()
 		{
+			//housekeeping
 			StopAllCoroutines();
 		}
 	}

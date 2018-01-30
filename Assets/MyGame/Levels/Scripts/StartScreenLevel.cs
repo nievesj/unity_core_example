@@ -13,7 +13,10 @@ namespace TheAwesomeGame
 		{
 			base.Start();
 
+			//Listen to the OnWindowClosed event.
 			uiService.OnWindowClosed.Subscribe(OnWindowClosed);
+
+			//Open title screen window window
 			uiService.OpenWindow(Constants.Windows.UI_TITLE_SCREEN_WINDOW)
 				.Subscribe(window =>
 				{
@@ -23,6 +26,7 @@ namespace TheAwesomeGame
 
 		protected void OnWindowClosed(UIWindow window)
 		{
+			//When title window closes unload level.
 			if (window is UITitleScreenWindow)
 			{
 				Unload();
