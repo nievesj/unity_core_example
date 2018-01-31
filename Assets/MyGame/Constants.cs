@@ -12,6 +12,15 @@ namespace TheAwesomeGame
 			public const string SHOW_OFF_LEVEL = "ShowOffLevel";
 		}
 
+		public static class Scenes
+		{
+			public const string SCENE_1 = "Scene1";
+			public const string SCENE_2 = "Scene2";
+			public const string SCENE_3 = "Scene3";
+			public const string SCENE_4 = "Scene4";
+			public const string CORE = "CoreGame";
+		}
+
 		public static class Windows
 		{
 			public const string UI_TITLE_SCREEN_WINDOW = "UITitleScreenWindow";
