@@ -9,7 +9,7 @@ _Core is a collection of utilities and libraries to help speed up development in
 	* Can load assets from the streaming assets folder
 	* Can load assets from a web server
 	* Can cache downloaded bundles
-	* Can load scenes as asset bundles
+	* Can load asset bundle scenes
 	* Can simulate asset bundles on editor
 * Basic window system
 	* Open / Close window
@@ -32,7 +32,7 @@ The main aspect of this library is loading and unloading asset bundles in a rela
 
 How to integrate into a project?
 ---
-This project is meant to be added to an existing Unity Project, either by downloading it and placing it in the "Plugins" folder, or by setting it as a submodule to your git repo. Alternatively you can use the [Example Project](https://github.com/nievesj/unity_core_example) as a starting point. 
+This project is meant to be added to an existing Unity Project, either by downloading it and placing it in the "Plugins" folder, or by setting it as a subtree to your git repo. Alternatively you can use the [Example Project](https://github.com/nievesj/unity_core_example) as a starting point. 
 
 Dependencies
 ---
