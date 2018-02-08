@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+
+using System.Collections;
 using System.Collections.Generic;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 using UnityEngine;
 
 public static class EditorPreferences
@@ -11,17 +11,14 @@ public static class EditorPreferences
 	{
 		get
 		{
-#if UNITY_EDITOR
 			return EditorPrefs.GetBool("EditorRefSimulateAssetBundles", false);
-#else
-			return false;
-#endif
-
 		}
+
 		set
 		{
 			EditorPrefs.SetBool("EditorRefSimulateAssetBundles", value);
 		}
 	}
-
 }
+
+#endif

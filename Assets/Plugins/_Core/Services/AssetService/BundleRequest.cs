@@ -1,12 +1,12 @@
 using System;
+using Core.Services;
 using System.Collections;
 using System.IO;
-using Core.Service;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Core.Assets
+namespace Core.Services.Assets
 {
 	public struct AssetOptions
 	{
@@ -81,7 +81,7 @@ namespace Core.Assets
 			}
 		}
 
-		public AssetCacheState AssetCacheState { get { return ServiceLocator.GetService<IAssetService>().AssetCacheState; } }
+		// public AssetCacheState AssetCacheState { get { return ServiceLocator.GetService<IAssetService>().AssetCacheState; } }
 
 		public BundleRequest(AssetCategoryRoot cat, string bundle, string asset)
 		{
@@ -148,5 +148,11 @@ namespace Core.Assets
 	{
 		Cache,
 		NoCache
+	}
+
+	public enum AssetCacheStrategy
+	{
+		CopyBundleManifestFileLocally,
+		UseUnityCloudManifestBuildVersion
 	}
 }
