@@ -20,7 +20,7 @@ namespace TheAwesomeGame
 			uiService.OpenWindow(Constants.Windows.UI_TITLE_SCREEN_WINDOW)
 				.Subscribe(window =>
 				{
-					Debug.Log(("Window " + window.name + " opened.").Colored(Colors.fuchsia));
+					Debug.Log(("Window " + window.name + " opened.").Colored(Colors.Fuchsia));
 				});
 		}
 
