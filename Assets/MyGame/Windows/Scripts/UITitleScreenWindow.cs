@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using Core.Services;
+using Core.Services.Levels;
+using Core.Services.UI;
+using System.Collections;
 using System.Collections.Generic;
-using Core.LevelLoaderService;
-using Core.Service;
-using Core.UI;
 using UniRx;
 using UnityEngine;
 
