@@ -1,0 +1,14 @@
+ManifestFileVersion: 0
+CRC: 3415202309
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6b4dbc29d3601a4b8f6adc4258935153
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
+HashAppended: 0
+ClassTypes: []
+Assets:
+- Assets/Plugins/_Core/_GameExample/CoreGame.unity
+Dependencies: []
