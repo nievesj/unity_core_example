@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e459153e999ca42b4a41e45a64b17ce3, type: 3}
   m_Name: AssetService
   m_EditorClassIdentifier: 
-  assetBundlesURL: http://www.josemnieves.com/unity_core_example_bundles/
+  assetBundlesURL: http://www.josemnieves.com/core-framework-demo/asset-bundles/
   useStreamingAssets: 0
   useCache: 1
   cacheBundleManifestsLocally: 0

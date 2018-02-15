@@ -2,6 +2,8 @@
 # _Core
 Current Version 1.1
 
+Supported Unity versions: 2017.3 or latest. 
+
 What is _Core?
 ---
 _Core is a collection of utilities and libraries to help speed up development in Unity3D by providing the following functionality:

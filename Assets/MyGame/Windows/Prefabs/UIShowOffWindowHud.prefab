@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 114509506557546678}
   - component: {fileID: 114767398206485798}
   m_Layer: 5
-  m_Name: Resize
+  m_Name: Create
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,11 +540,14 @@ MonoBehaviour:
   inTransition:
     transitionType: 2
     tweenType: 32
-    time: 0.5
+    transitionTime: 0.5
+    transitionSound: {fileID: 0}
   outTransition:
     transitionType: 2
     tweenType: 32
-    time: 0.5
+    transitionTime: 0.5
+    transitionSound: {fileID: 0}
+  closeButton: {fileID: 0}
   poolSizeSlider: {fileID: 114269562039570178}
   spawningSpeedSlider: {fileID: 114755257039213634}
 --- !u!114 &114256632544878368

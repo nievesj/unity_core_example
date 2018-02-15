@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TheAwesomeGame
+namespace CoreDemo
 {
 	internal static class Constants
 	{
 		public static class Levels
 		{
-			public const string START_SCREEN_LEVEL = "StartScreenLevel";
+			public const string CORE_DEMO_LEVEL = "CoreDemoLevel";
 			public const string SHOW_OFF_LEVEL = "ShowOffLevel";
 		}
 
@@ -28,6 +28,7 @@ namespace TheAwesomeGame
 			public const string UI_TOP_WINDOW = "TopWindow";
 			public const string UI_BOTTOM_WINDOW = "BottomWindow";
 			public const string UI_RIGHT_WINDOW = "RightWindow";
+			public const string UI_POOL_WIDGET = "PoolWidget";
 		}
 
 		public static class Assets

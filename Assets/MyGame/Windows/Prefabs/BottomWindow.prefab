@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224399534267892748}
   - component: {fileID: 222490927564549554}
   - component: {fileID: 114938199860142682}
-  - component: {fileID: 114852397289526612}
+  - component: {fileID: 114550436409500944}
   m_Layer: 5
   m_Name: BottomWindow
   m_TagString: Untagged
@@ -124,6 +124,28 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114550436409500944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470523138136260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c04a7e181debb4f8a5d8659fc6a89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inTransition:
+    transitionType: 5
+    tweenType: 32
+    transitionTime: 0.5
+    transitionSound: {fileID: 0}
+  outTransition:
+    transitionType: 5
+    tweenType: 32
+    transitionTime: 0.5
+    transitionSound: {fileID: 0}
+  closeButton: {fileID: 114698129531377434}
 --- !u!114 &114698129531377434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,7 +185,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114852397289526612}
+      - m_Target: {fileID: 0}
         m_MethodName: UIClose
         m_Mode: 1
         m_Arguments:
@@ -176,25 +198,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114852397289526612
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1470523138136260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a20d6bac01874d3ba1b7020a7605686, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inTransition:
-    transitionType: 5
-    tweenType: 32
-    time: 0.5
-  outTransition:
-    transitionType: 5
-    tweenType: 32
-    time: 0.5
 --- !u!114 &114938199860142682
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224395811192797622}
   - component: {fileID: 222467690960314862}
   - component: {fileID: 114785881003523720}
-  - component: {fileID: 114088928337261012}
+  - component: {fileID: 114916937091106090}
   m_Layer: 5
   m_Name: RightWindow
   m_TagString: Untagged
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114088928337261012}
+      - m_Target: {fileID: 0}
         m_MethodName: UIClose
         m_Mode: 1
         m_Arguments:
@@ -143,25 +143,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114088928337261012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1462449609877540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a20d6bac01874d3ba1b7020a7605686, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inTransition:
-    transitionType: 3
-    tweenType: 32
-    time: 0.5
-  outTransition:
-    transitionType: 3
-    tweenType: 32
-    time: 0.5
 --- !u!114 &114395420982794414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +203,28 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114916937091106090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462449609877540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c04a7e181debb4f8a5d8659fc6a89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inTransition:
+    transitionType: 3
+    tweenType: 32
+    transitionTime: 0.5
+    transitionSound: {fileID: 0}
+  outTransition:
+    transitionType: 3
+    tweenType: 32
+    transitionTime: 0.5
+    transitionSound: {fileID: 0}
+  closeButton: {fileID: 114025046696368472}
 --- !u!222 &222193614190089162
 CanvasRenderer:
   m_ObjectHideFlags: 1

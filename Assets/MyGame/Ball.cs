@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-namespace TheAwesomeGame
+namespace CoreDemo
 {
 	public class Ball : MonoBehaviour
 	{

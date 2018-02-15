@@ -1,10 +1,11 @@
-﻿using Core.Services;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Core.Services;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace TheAwesomeGame
+namespace CoreDemo
 {
 	public class MyGame : Game
 	{
@@ -14,12 +15,14 @@ namespace TheAwesomeGame
 		/// <param name="locator"></param>
 		protected override void OnGameStart(ServiceLocator locator)
 		{
-			//Load first level.
-			LevelLoader.LoadLevel(Constants.Levels.START_SCREEN_LEVEL)
+			base.OnGameStart(locator);
+			LevelLoader.LoadLevel(Constants.Levels.CORE_DEMO_LEVEL)
 				.Subscribe(level =>
 				{
 					Debug.Log(("MyGame Started.").Colored(Colors.Fuchsia));
-					Debug.Log(("MyGame | Level " + Constants.Levels.START_SCREEN_LEVEL + " loaded.").Colored(Colors.Fuchsia));
+
+					//Load CoreDemoLevel level
+					Debug.Log(("MyGame | Level " + Constants.Levels.CORE_DEMO_LEVEL + " loaded.").Colored(Colors.Fuchsia));
 				});
 		}
 	}

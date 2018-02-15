@@ -1,26 +1,23 @@
-﻿using Core.Services;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Core.Services;
 using Core.Services.Levels;
 using Core.Services.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-namespace TheAwesomeGame
+namespace CoreDemo
 {
 	/// <summary>
 	/// Window that opens when the Title Screen level loads.
 	/// </summary>
-	public class UITitleScreenWindow : UIWindow
+	public class UITitleScreenWindow : UIDialog
 	{
-		LevelLoaderService levelLoader;
+		ILevelLoaderService levelLoader;
 
-		public override void Initialize(IUIService svc)
+		protected override void Awake()
 		{
-			base.Initialize(svc);
-
-			//Get level loader service reference
-			levelLoader = ServiceLocator.GetService<ILevelLoaderService>()as LevelLoaderService;
+			levelLoader = ServiceLocator.GetService<ILevelLoaderService>();
 		}
 
 		/// <summary>
@@ -32,8 +29,12 @@ namespace TheAwesomeGame
 			Close()
 				.Subscribe(window =>
 				{
-					levelLoader.LoadLevel(Constants.Levels.SHOW_OFF_LEVEL).Subscribe();
+					uiService.OpenUIElement(Constants.Windows.UI_SHOW_OFF_WINDOW_HUD).Subscribe();
 				});
 		}
+
+		protected override void OnElementShow() {}
+
+		protected override void OnElementHide() {}
 	}
 }
