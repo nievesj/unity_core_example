@@ -2,13 +2,13 @@
 
 What is this?
 ---
-This is an example of a project using the [_Core framework](https://github.com/nievesj/unity-core-project). It has been tested in iOS, Android, WebGL, Windows and Mac.
+This is an example of a project using the [Core Framework](https://github.com/nievesj/unity-core-project). It has been tested in iOS, Android, WebGL, Windows and Mac.
 
-WebGL test:  http://www.josemnieves.com/unity/core_example_webgl_test/
+WebGL test:  [Core Framework Demo](http://www.josemnieves.com/core-framework-demo/) 
 
 Setup
 ---
-This project contains the _Core library as a git subtree, after cloning the repo go to Assets -> MyGame and open the scene CoreGame. This will be your starting point. 
+After cloning the repo go to Assets -> MyGame and open the scene CoreGame. This will be your starting point. 
 
 Asset Bundles
 ---
