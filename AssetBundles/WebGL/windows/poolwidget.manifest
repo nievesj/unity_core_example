@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2833072802
+CRC: 1590272702
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 16a261ddba4b42b9c5014a813eceab62
+    Hash: cb36b3cc99c3437008fee7f2966c37c1
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f44585f371adf3755d7566e0698b9828
+    Hash: 1e5d5f117fd5c76d58e196b3a2284a07
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -18,11 +18,11 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 - Class: 114
-  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: c8888378db9e54d71886aaffa432c4b5, type: 3}
+  Script: {fileID: 11500000, guid: d814051d3757a194893ea491b6aef438, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -34,5 +34,5 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
-- Assets/Plugins/_Core/_UIWindowsExample/Prefabs/UILoading.prefab
+- Assets/MyGame/Windows/Prefabs/PoolWidget.prefab
 Dependencies: []

@@ -1,46 +1,58 @@
 ManifestFileVersion: 0
-CRC: 1895682289
+CRC: 2734183256
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: windows/uiloading
-      Dependencies: {}
-    Info_1:
       Name: services/serviceconfiguration
       Dependencies:
         Dependency_0: services/assetservice
         Dependency_1: services/levelloaderservice
         Dependency_2: services/controlservice
-    Info_2:
+    Info_1:
       Name: services/assetservice
       Dependencies: {}
-    Info_3:
+    Info_2:
       Name: services/levelloaderservice
       Dependencies: {}
-    Info_4:
+    Info_3:
       Name: services/controlservice
       Dependencies: {}
+    Info_4:
+      Name: windows/bottomwindow
+      Dependencies: {}
     Info_5:
-      Name: levels/showofflevel
-      Dependencies: {}
-    Info_6:
-      Name: windows/uishowoffwindowhud
-      Dependencies: {}
-    Info_7:
-      Name: levels/startscreenlevel
-      Dependencies: {}
-    Info_8:
-      Name: prefabs/ball
-      Dependencies: {}
-    Info_9:
-      Name: windows/topwindow
-      Dependencies: {}
-    Info_10:
       Name: windows/rightwindow
       Dependencies: {}
-    Info_11:
+    Info_6:
+      Name: windows/topwindow
+      Dependencies: {}
+    Info_7:
+      Name: windows/uishowoffwindowhud
+      Dependencies: {}
+    Info_8:
       Name: windows/uititlescreenwindow
       Dependencies: {}
+    Info_9:
+      Name: prefabs/ball
+      Dependencies: {}
+    Info_10:
+      Name: scenes/scene2
+      Dependencies: {}
+    Info_11:
+      Name: scenes/scene4
+      Dependencies: {}
     Info_12:
-      Name: windows/bottomwindow
+      Name: scenes/scene1
+      Dependencies: {}
+    Info_13:
+      Name: scenes/scene3
+      Dependencies: {}
+    Info_14:
+      Name: scenes/coregame
+      Dependencies: {}
+    Info_15:
+      Name: windows/poolwidget
+      Dependencies: {}
+    Info_16:
+      Name: levels/coredemolevel
       Dependencies: {}

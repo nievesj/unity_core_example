@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2346850717
+CRC: 198853484
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 07c6930fc80943418b0c303ba438e79f
+    Hash: 624ca61fa17d3d2f539182aed9e68d7b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 8171ab31e1732b4cf887857d76e43dcc
+    Hash: 2a79d258fa7ffde5ab5d48ce22506473
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -33,7 +33,11 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 8d82e82ef7b764a509d5dda4d4dbbf73, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: e459153e999ca42b4a41e45a64b17ce3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fd187a16df8b75542b196072de400b2f, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 222
   Script: {instanceID: 0}
 - Class: 223
   Script: {instanceID: 0}
@@ -43,6 +47,6 @@ Assets:
 - Assets/MyGame/_CoreConfig/CoreServiceConfig.asset
 - Assets/Plugins/_Core/_CoreConfigExample/CoreServiceConfig.asset
 Dependencies:
-- /Users/josenieves/Unity/unity_core_example/AssetBundles/WebGL/services/assetservice
-- /Users/josenieves/Unity/unity_core_example/AssetBundles/WebGL/services/levelloaderservice
-- /Users/josenieves/Unity/unity_core_example/AssetBundles/WebGL/services/controlservice
+- D:/Unity/unity_core_example/AssetBundles/WebGL/services/assetservice
+- D:/Unity/unity_core_example/AssetBundles/WebGL/services/levelloaderservice
+- D:/Unity/unity_core_example/AssetBundles/WebGL/services/controlservice

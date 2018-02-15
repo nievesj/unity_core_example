@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3443339780
+CRC: 1722264665
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8ce9555d23bd717fb3603c40ff947b4d
+    Hash: 1505aaa5b8dbfcd63630c6727896a230
   TypeTreeHash:
     serializedVersion: 2
     Hash: 74dcd0189e86fcd6c255b354c4335a24
@@ -14,6 +14,5 @@ ClassTypes:
 - Class: 115
   Script: {instanceID: 0}
 Assets:
-- Assets/Plugins/_Core/_CoreConfigExample/LevelLoaderService.asset
 - Assets/MyGame/_CoreConfig/LevelLoaderService.asset
 Dependencies: []

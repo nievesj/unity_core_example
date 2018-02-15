@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 784668353
+CRC: 3606992323
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2b1f08ca3174f542db56fc9b2f700e3a
+    Hash: ee264646ea045763b3116cd4c6f7483e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 45ae4fcc5acc037ce2e18531566cc0f7
+    Hash: fbdfa578f7d7431561ba5d0a52ab5895
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -30,9 +30,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 072d0d018b68d4bfc937008c98501c23, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 17d9178ca8c044323af38d395a7b46df, type: 3}
+  Script: {fileID: 11500000, guid: c62222dcf99844dd781f3c4af9ed588a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 Assets:
-- Assets/MyGame/Levels/Prefabs/ShowOffLevel.prefab
+- Assets/MyGame/Levels/Prefabs/CoreDemoLevel.prefab
 Dependencies: []
