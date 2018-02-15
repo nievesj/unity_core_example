@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 222681683713976372}
   - component: {fileID: 114871280687409140}
   - component: {fileID: 114759886107018376}
-  - component: {fileID: 114241401169948974}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -82,41 +81,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114241401169948974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1379704991726628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be224afafcb7e4a72888816c706ae2e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onClickSound:
-    clip: {fileID: 8300000, guid: fc90ae04b096641bdbb1086f2e5e5a75, type: 3}
-    playFrom: {fileID: 0}
-    player: {fileID: 0}
-    audioSourceOptions:
-      output: {fileID: 0}
-      mute: 0
-      bypassEffects: 0
-      bypassListenerEffects: 0
-      bypassReverbZones: 0
-      playOnAwake: 0
-      loop: 0
-      priority: 128
-      volume: 1
-      pitch: 1
-      panStereo: 0
-      spatialBlend: 0
-      reverbZoneMix: 1
-      SoundSettings3D:
-        dopplerLevel: 1
-        spread: 0
-        rolloffMode: 0
-        minDistance: 1
-        maxDistance: 500
 --- !u!114 &114360179534058260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +168,7 @@ MonoBehaviour:
     tweenType: 1
     transitionTime: 0.5
     transitionSound: {fileID: 0}
-  closeButton: {fileID: 0}
+  closeButton: {fileID: 114759886107018376}
 --- !u!114 &114759886107018376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,18 +207,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114871280687409140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114649611213958864}
-        m_MethodName: OnStartClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114871280687409140
