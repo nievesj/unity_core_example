@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace CoreDemo
+﻿namespace CoreDemo
 {
 	internal static class Constants
 	{
@@ -21,7 +17,7 @@ namespace CoreDemo
 			public const string CORE = "CoreGame";
 		}
 
-		public static class Windows
+		public static class Screens
 		{
 			public const string UI_TITLE_SCREEN_WINDOW = "UITitleScreenWindow";
 			public const string UI_SHOW_OFF_WINDOW_HUD = "UIShowOffWindowHud";

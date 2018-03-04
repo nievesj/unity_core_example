@@ -1,55 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Core.Polling;
-using Core.Services;
-using Core.Services.Assets;
+﻿using Core.Services.Assets;
+using Core.Services.Factory;
 using Core.Services.Levels;
 using Core.Services.UI;
+using System.Collections;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace CoreDemo
 {
 	/// <summary>
-	/// Demo level for CoreDemo. 
+	/// Demo level for CoreDemo.
 	/// </summary>
 	public class CoreDemoLevel : Level
 	{
 		[SerializeField]
-		Transform spawner; //Place where balls are going to spawn from
+		private Transform spawner; //Place where balls are going to spawn from
 
-		float spawningSpeed = 1; //Default spawning speed
-		Pooler<Ball> pooler;
-		IAssetService assetService;
-		Ball ballPrefab;
+		[Inject]
+		private FactoryService _factoryService;
+
+		private Pooler<Ball> pooler;
+
+		private float spawningSpeed = 1; //Default spawning speed
+
+		private Ball ballPrefab;
 
 		//Hot observables to be discarded when the object is destroyed
-		CompositeDisposable disposables = new CompositeDisposable();
+		private CompositeDisposable disposables = new CompositeDisposable();
 
 		//Widget!
-		PoolWidget poolWidget;
+		private PoolWidget poolWidget;
 
 		protected override void Awake()
 		{
 			base.Awake();
 
 			//Get service references and subscribe to window events.
-			assetService = ServiceLocator.GetService<IAssetService>();
 			uiService.OnUIElementClosed.Subscribe(OnUIElementClosed);
 			uiService.OnUIElementOpened.Subscribe(OnUIElementOpened);
 
 			//Define bundle to be requested
 			BundleRequest bundleNeeded = new BundleRequest(AssetCategoryRoot.Prefabs,
-				Constants.Assets.ASSET_BALL, Constants.Assets.ASSET_BALL);
+				Constants.Assets.ASSET_BALL, Constants.Assets.ASSET_BALL, _assetService.Configuration);
 
 			//Request ball asset
-			assetService.GetAndLoadAsset<Ball>(bundleNeeded).Subscribe(loadedBall =>
+			_assetService.GetAndLoadAsset<Ball>(bundleNeeded).Subscribe(loadedBall =>
 			{
 				//Asset ball loaded. Store it and use it as the pool prefab.
 				ballPrefab = loadedBall;
 
 				//Initialize pooler, and set the pool to one element
-				pooler = new Pooler<Ball>(loadedBall.gameObject, 1);
+				pooler = _factoryService.CreatePool<Ball>(ballPrefab.gameObject, 1);
 			});
 		}
 
@@ -61,7 +63,7 @@ namespace CoreDemo
 			uiService.OnUIElementClosed.Subscribe(OnUIElementClosed);
 
 			//Open title screen window window
-			uiService.OpenUIElement(Constants.Windows.UI_TITLE_SCREEN_WINDOW)
+			uiService.OpenUIElement(Constants.Screens.UI_TITLE_SCREEN_WINDOW)
 				.Subscribe(window =>
 				{
 					Debug.Log(("Window " + window.name + " opened.").Colored(Colors.Fuchsia));
@@ -81,7 +83,7 @@ namespace CoreDemo
 
 		protected void OnUIElementOpened(UIElement window)
 		{
-			//Left panel opened. 
+			//Left panel opened.
 			if (window is UIShowOffWindowHud)
 			{
 				//Listen to OnSpawningSpeedChanged event
@@ -100,7 +102,7 @@ namespace CoreDemo
 					.AddTo(disposables);
 
 				//Open widget
-				uiService.OpenUIElement(Constants.Windows.UI_POOL_WIDGET).Subscribe(element =>
+				uiService.OpenUIElement(Constants.Screens.UI_POOL_WIDGET).Subscribe(element =>
 				{
 					poolWidget = element as PoolWidget;
 					poolWidget.UpdateWidgetValue(pooler.SizeLimit, pooler.ActiveElements);
@@ -108,7 +110,7 @@ namespace CoreDemo
 			}
 		}
 
-		void OnResetPool(int size)
+		private void OnResetPool(int size)
 		{
 			//Change pool size. Warning, if the pool size is changed, for example, from 30 to 1
 			//the objects that had been created and are in use will stay on the scene until they are pushed back into the pool, at which moment they will be desroyed.
@@ -116,7 +118,7 @@ namespace CoreDemo
 				pooler.ResizePool(size);
 		}
 
-		IEnumerator Spawner(float time)
+		private IEnumerator Spawner(float time)
 		{
 			while (enabled)
 			{
@@ -135,8 +137,8 @@ namespace CoreDemo
 					//change position
 					ball.transform.position = spawner.position;
 
-					//Subscribe to hasCollided ReactiveProperty
-					ball.hasCollided.Subscribe(collided =>
+					//Subscribe to HasCollided ReactiveProperty
+					ball.HasCollided.Subscribe(collided =>
 					{
 						//if true send it back into the pool
 						if (collided)
@@ -159,7 +161,7 @@ namespace CoreDemo
 			}
 
 			//unload ball
-			assetService.UnloadAsset(ballPrefab.name, true);
+			_assetService.UnloadAsset(ballPrefab.name, true);
 			//cleanup events
 			disposables.Dispose();
 		}

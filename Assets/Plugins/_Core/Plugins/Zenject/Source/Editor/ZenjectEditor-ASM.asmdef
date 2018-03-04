@@ -1,0 +1,10 @@
+{
+    "name": "ZenjectEditor-ASM",
+    "references": [
+        "Zenject-ASM"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}

@@ -1,10 +1,8 @@
-﻿using Core.Services;
+﻿using Core.Services.Assets;
 using Core.Services.Audio;
 using Core.Services.UI;
-using System.Collections;
-using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Services.Levels
 {
@@ -17,52 +15,60 @@ namespace Core.Services.Levels
 	}
 
 	/// <summary>
-	/// A level has the same purpose of a scene, but we can change them without having to load a scene.
-	/// This works well on most plaforms except for WebGL where loading scenes also clears the memory.
+	/// A level has the same purpose of a scene, but we can change them without having to load a
+	/// scene. This works well on most plaforms except for WebGL where loading scenes also clears the memory.
 	/// </summary>
-	public abstract class Level : MonoBehaviour
+	public abstract class Level : CoreBehaviour
 	{
 		public AudioPlayer backgroundMusic;
 
-		protected ILevelLoaderService levelService;
-		protected IAudioService audioService;
-		protected IUIService uiService;
+		[Inject]
+		protected LevelLoaderService _levelService;
 
-		protected LevelState levelState;
-		public LevelState State { get { return levelState; } }
+		[Inject]
+		protected AudioService _audioService;
 
-		protected virtual void Awake()
+		[Inject]
+		protected UIService uiService;
+
+		[Inject]
+		protected AssetService _assetService;
+
+		protected LevelState _levelState;
+
+		public LevelState State { get { return _levelState; } }
+
+		protected override void Awake()
 		{
+			base.Awake();
 			Debug.Log(("Level: " + name + " loaded").Colored(Colors.LightBlue));
 
-			levelService = ServiceLocator.GetService<ILevelLoaderService>();
-			audioService = ServiceLocator.GetService<IAudioService>();
-			uiService = ServiceLocator.GetService<IUIService>();
-
-			levelState = LevelState.Loaded;
+			_levelState = LevelState.Loaded;
 		}
 
-		protected virtual void Start()
+		protected override void Start()
 		{
+			base.Start();
+
 			Debug.Log(("Level: " + name + " started").Colored(Colors.LightBlue));
 
-			levelState = LevelState.Started;
-			levelState = LevelState.InProgress;
+			_levelState = LevelState.Started;
+			_levelState = LevelState.InProgress;
 
-			if (audioService != null && backgroundMusic != null && backgroundMusic.Clip != null)
-				audioService.PlayMusic(backgroundMusic);
+			if (_audioService != null && backgroundMusic != null && backgroundMusic.Clip != null)
+				_audioService.PlayMusic(backgroundMusic);
 		}
 
 		public virtual void Unload()
 		{
-			if (audioService != null && backgroundMusic != null && backgroundMusic.Clip != null)
-				audioService.StopClip(backgroundMusic);
+			if (_audioService != null && backgroundMusic != null && backgroundMusic.Clip != null)
+				_audioService.StopClip(backgroundMusic);
 		}
 
-		protected virtual void OnDestroy()
+		protected override void OnDestroy()
 		{
-			if (audioService != null && backgroundMusic != null && backgroundMusic.Clip != null)
-				audioService.StopClip(backgroundMusic);
+			if (_audioService != null && backgroundMusic != null && backgroundMusic.Clip != null)
+				_audioService.StopClip(backgroundMusic);
 		}
 	}
 }

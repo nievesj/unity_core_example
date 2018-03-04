@@ -168,7 +168,7 @@ MonoBehaviour:
     tweenType: 1
     transitionTime: 0.5
     transitionSound: {fileID: 0}
-  closeButton: {fileID: 114759886107018376}
+  closeButton: {fileID: 0}
 --- !u!114 &114759886107018376
 MonoBehaviour:
   m_ObjectHideFlags: 1

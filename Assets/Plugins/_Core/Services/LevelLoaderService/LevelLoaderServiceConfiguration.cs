@@ -1,13 +1,10 @@
-﻿using Core.Services;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace Core.Services.Levels
 {
 	public class LevelLoaderServiceConfiguration : ServiceConfiguration
 	{
-		override protected IService ServiceClass { get { return new LevelLoaderService(); } }
+		public override Service ServiceClass { get { return new LevelLoaderService(this); } }
 
 		public List<string> levels;
 	}

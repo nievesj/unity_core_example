@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Core.Services;
-using Core.Services.Levels;
+﻿using Core.Services.Levels;
 using Core.Services.UI;
 using UniRx;
-using UnityEngine;
+using Zenject;
 
 namespace CoreDemo
 {
@@ -13,12 +10,8 @@ namespace CoreDemo
 	/// </summary>
 	public class UITitleScreenWindow : UIDialog
 	{
-		ILevelLoaderService levelLoader;
-
-		protected override void Awake()
-		{
-			levelLoader = ServiceLocator.GetService<ILevelLoaderService>();
-		}
+		[Inject]
+		private LevelLoaderService _levelLoader;
 
 		/// <summary>
 		/// Handles UI OnClick event for the start button.
@@ -29,12 +22,12 @@ namespace CoreDemo
 			Close()
 				.Subscribe(window =>
 				{
-					uiService.OpenUIElement(Constants.Windows.UI_SHOW_OFF_WINDOW_HUD).Subscribe();
+					uiService.OpenUIElement(Constants.Screens.UI_SHOW_OFF_WINDOW_HUD).Subscribe();
 				});
 		}
 
-		protected override void OnElementShow() {}
+		protected override void OnElementShow() { }
 
-		protected override void OnElementHide() {}
+		protected override void OnElementHide() { }
 	}
 }

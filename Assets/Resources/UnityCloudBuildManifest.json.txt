@@ -1,0 +1,11 @@
+﻿{
+	"scmCommitId": "ere3344343",
+	"scmBranch": "master",
+	"buildNumber": "25",
+	"buildStartTime": "8/15/2017 11:22:25 PM",
+	"projectId": "superbuild",
+	"bundleId": "",
+	"unityVersion": "2017.1.0f3",
+	"xcodeVersion": "",
+	"cloudBuildTargetName": "win64"
+}

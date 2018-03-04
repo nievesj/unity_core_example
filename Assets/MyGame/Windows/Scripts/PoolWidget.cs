@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Core.Services.UI;
+﻿using Core.Services.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,15 +10,15 @@ namespace CoreDemo
 	public class PoolWidget : UIWidget
 	{
 		[SerializeField]
-		Text poolSizeLimitText;
+		private Text poolSizeLimitText;
 
 		[SerializeField]
-		Text activePoolElementsText;
+		private Text activePoolElementsText;
 
 		/// <summary>
 		/// Updates the Text values
 		/// </summary>
-		/// <param name="size"></param>
+		/// <param name="size">  </param>
 		/// <param name="active"></param>
 		public void UpdateWidgetValue(int size, int active)
 		{

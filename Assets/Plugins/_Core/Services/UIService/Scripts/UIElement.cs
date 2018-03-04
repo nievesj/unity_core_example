@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using Core.Services.Audio;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Services.UI
 {
 	/// <summary>
-	/// UIElement is the base class for any UI element that is controlled by the UIService.
+	/// UIElement is the base class for any UI element that is controlled by the _uiService. 
 	/// </summary>
-	public abstract class UIElement : MonoBehaviour
+	public abstract class UIElement : CoreBehaviour
 	{
-		protected IUIService uiService;
-		protected IAudioService audioService;
+		[Inject]
+		protected UIService uiService;
+
+		[Inject]
+		protected AudioService audioService;
 
 		public UIElementTransitionOptions inTransition, outTransition;
 		public RectTransform RTransform { get { return GetComponent<RectTransform>(); } }
@@ -24,38 +28,34 @@ namespace Core.Services.UI
 		protected Subject<UIElement> onClosed = new Subject<UIElement>();
 		public IObservable<UIElement> OnClosed { get { return onClosed; } }
 
-		protected abstract void Awake();
+		protected override void Awake() { }
 
 		/// <summary>
-		/// Triggers after the transition on Show ends.
+		/// Triggers after the transition on Show ends. 
 		/// </summary>
 		/// <param name="observer"></param>
 		protected abstract void OnElementShow();
 
 		/// <summary>
-		/// Triggers after the transition on Hide ends.
+		/// Triggers after the transition on Hide ends. 
 		/// </summary>
 		protected abstract void OnElementHide();
 
-		internal void Initialize(IUIService svc)
+		protected override void Start()
 		{
-			uiService = svc;
-			audioService = ServiceLocator.GetService<IAudioService>();
-		}
+			base.Start();
 
-		protected virtual void Start()
-		{
 			Show().Subscribe(OnWindowOpened);
 		}
 
 		/// <summary>
-		/// Shows the UI Element and performs any transition
+		/// Shows the UI Element and performs any transition 
 		/// </summary>
 		/// <returns></returns>
 		public virtual IObservable<UIElement> Show()
 		{
 			return Observable.Create<UIElement>(
-				(IObserver<UIElement> observer)=>
+				(IObserver<UIElement> observer) =>
 				{
 					var subject = new Subject<UIElement>();
 
@@ -78,13 +78,13 @@ namespace Core.Services.UI
 		}
 
 		/// <summary>
-		/// Hides the UI Element after playing the out transition.
+		/// Hides the UI Element after playing the out transition. 
 		/// </summary>
 		/// <returns></returns>
 		public virtual IObservable<UIElement> Hide(bool isClose = false)
 		{
 			return Observable.Create<UIElement>(
-				(IObserver<UIElement> observer)=>
+				(IObserver<UIElement> observer) =>
 				{
 					var subject = new Subject<UIElement>();
 
@@ -109,13 +109,13 @@ namespace Core.Services.UI
 		}
 
 		/// <summary>
-		/// Close window and tells iservice to destroy the uielement and unload the asset
+		/// Close window and tells iservice to destroy the uielement and unload the asset 
 		/// </summary>
-		/// <returns>Observable</returns>
+		/// <returns> Observable </returns>
 		public virtual IObservable<UIElement> Close()
 		{
 			return Observable.Create<UIElement>(
-				(IObserver<UIElement> observer)=>
+				(IObserver<UIElement> observer) =>
 				{
 					Action<UIElement> OnCLosed = window =>
 					{
@@ -130,7 +130,7 @@ namespace Core.Services.UI
 		}
 
 		/// <summary>
-		///Communicates to UIService that the window is opened and active
+		///Communicates to _uiService that the window is opened and active
 		/// </summary>
 		/// <param name="uiElement"></param>
 		protected virtual void OnWindowOpened(UIElement uiElement)
@@ -140,7 +140,7 @@ namespace Core.Services.UI
 		}
 
 		/// <summary>
-		/// Communicates to UIService that the window is ready to be destroyed and the asset unloaded
+		/// Communicates to _uiService that the window is ready to be destroyed and the asset unloaded 
 		/// </summary>
 		/// <param name="uiElement"></param>
 		protected virtual void OnWindowClosed(UIElement uiElement)

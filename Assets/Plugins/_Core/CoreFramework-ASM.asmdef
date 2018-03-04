@@ -1,0 +1,8 @@
+{
+    "name": "CoreFramework-ASM",
+    "references": [
+        "Zenject-ASM"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

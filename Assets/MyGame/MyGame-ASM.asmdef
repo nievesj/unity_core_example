@@ -1,0 +1,9 @@
+{
+    "name": "MyGame-ASM",
+    "references": [
+        "CoreFramework-ASM",
+        "Zenject-ASM"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

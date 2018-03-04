@@ -1,22 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Core.Services;
+﻿using Core.Services;
+using Core.Services.Assets;
+using Core.Services.Audio;
+using Core.Services.Levels;
 using UniRx;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace CoreDemo
 {
 	public class MyGame : Game
 	{
+		[Inject]
+		private AssetService assetService;
+
+		[Inject]
+		private AudioService audioService;
+
+		[Inject]
+		private LevelLoaderService _levelLoaderService;
+
 		/// <summary>
-		/// Triggers when all services have been created and the Service Locator is ready.
+		///Global signal emitted when the game starts.
 		/// </summary>
-		/// <param name="locator"></param>
-		protected override void OnGameStart(ServiceLocator locator)
+		/// <param name = "unit" ></ param >
+		protected override void OnGameStart(Unit unit)
 		{
-			base.OnGameStart(locator);
-			LevelLoader.LoadLevel(Constants.Levels.CORE_DEMO_LEVEL)
+			base.OnGameStart(unit);
+			_levelLoaderService.LoadLevel(Constants.Levels.CORE_DEMO_LEVEL)
 				.Subscribe(level =>
 				{
 					Debug.Log(("MyGame Started.").Colored(Colors.Fuchsia));

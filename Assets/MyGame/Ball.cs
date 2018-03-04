@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
@@ -8,56 +7,56 @@ namespace CoreDemo
 	public class Ball : MonoBehaviour
 	{
 		[SerializeField]
-		Light light;
+		private Light _light;
 
-		public ReactiveProperty<bool> hasCollided; //Whenever .Value is changed an event is triggered.
-		bool collided = false;
-		Rigidbody rigidbody;
-		Vector3 newPos;
-		Quaternion newRot;
+		public ReactiveProperty<bool> HasCollided; //Whenever .Value is changed an event is triggered.
+		private bool _collided = false;
+		private Rigidbody _rigidbody;
+		private Vector3 _newPos;
+		private Quaternion _newRot;
 
-		void Awake()
+		private void Awake()
 		{
 			//cache position
-			newPos = transform.position;
-			newRot = transform.rotation;
+			_newPos = transform.position;
+			_newRot = transform.rotation;
 		}
 
 		public void Initialize()
 		{
-			collided = false;
-			hasCollided = new ReactiveProperty<bool>();
+			_collided = false;
+			HasCollided = new ReactiveProperty<bool>();
 
-			if (!rigidbody)
-				rigidbody = GetComponent<Rigidbody>();
+			if (!_rigidbody)
+				_rigidbody = GetComponent<Rigidbody>();
 
-			rigidbody.velocity = new Vector3(0f, 0f, 0f);
-			transform.position = newPos;
-			transform.rotation = newRot;
+			_rigidbody.velocity = new Vector3(0f, 0f, 0f);
+			transform.position = _newPos;
+			transform.rotation = _newRot;
 
-			light.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+			_light.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
 		}
 
-		void OnCollisionEnter(Collision collisionInfo)
+		private void OnCollisionEnter(Collision collisionInfo)
 		{
-			if (!collided)
+			if (!_collided)
 			{
-				collided = true;
+				_collided = true;
 
 				//Start timer to pop into the pool
 				StartCoroutine(Collided());
 			}
 		}
 
-		IEnumerator Collided()
+		private IEnumerator Collided()
 		{
 			yield return new WaitForSeconds(Random.Range(2.5f, 4));
 
-			//Changing the value of the ReactiveProperty triggers an event. 
-			hasCollided.Value = collided;
+			//Changing the value of the ReactiveProperty triggers an event.
+			HasCollided.Value = _collided;
 		}
 
-		void OnDestroy()
+		private void OnDestroy()
 		{
 			//housekeeping
 			StopAllCoroutines();
