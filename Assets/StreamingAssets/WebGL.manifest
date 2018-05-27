@@ -1,31 +1,28 @@
 ManifestFileVersion: 0
-CRC: 1586294405
+CRC: 2561094276
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: scenes/coregame
-      Dependencies: {}
-    Info_1:
-      Name: prefabs/ball
-      Dependencies: {}
-    Info_2:
       Name: levels/coredemolevel
       Dependencies: {}
-    Info_3:
+    Info_1:
       Name: screens/bottomwindow
       Dependencies: {}
-    Info_4:
+    Info_2:
       Name: screens/poolwidget
       Dependencies: {}
-    Info_5:
+    Info_3:
       Name: screens/rightwindow
       Dependencies: {}
-    Info_6:
+    Info_4:
       Name: screens/topwindow
       Dependencies: {}
-    Info_7:
+    Info_5:
       Name: screens/uishowoffwindowhud
       Dependencies: {}
-    Info_8:
+    Info_6:
       Name: screens/uititlescreenwindow
+      Dependencies: {}
+    Info_7:
+      Name: prefabs/ball
       Dependencies: {}

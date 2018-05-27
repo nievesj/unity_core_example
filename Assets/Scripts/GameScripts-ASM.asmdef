@@ -1,0 +1,11 @@
+{
+    "name": "GameScripts-ASM",
+    "references": [
+        "CoreFramework-ASM",
+        "Zenject-ASM"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

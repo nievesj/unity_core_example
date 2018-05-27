@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2351258692
+CRC: 1157384872
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b5384d4428a1add3dab36d49e3841eab
+    Hash: 126848b0e3d421bb78bd16e0ac1dc752
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 931781e7b93af54b54a37a1513866a5b
+    Hash: adb6a7aa0c5050c584fe2fb2de85aab1
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -28,11 +28,9 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 072d0d018b68d4bfc937008c98501c23, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: c62222dcf99844dd781f3c4af9ed588a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 Assets:
-- Assets/MyGame/Levels/Prefabs/CoreDemoLevel.prefab
+- Assets/Prefabs/Levels/CoreDemoLevel.prefab
 Dependencies: []
