@@ -3,36 +3,38 @@ using Zenject;
 
 namespace Core.Services.Factory
 {
-	public class FactoryService : Service
-	{
-		private FactoryServiceConfiguration _configuration;
+    public class FactoryService : Service
+    {
+#pragma warning disable 0414    // suppress value not used warning
+        private FactoryServiceConfiguration _configuration;
+#pragma warning restore 0414    // restore value not used warning
 
-		private DiContainer _diContainer;
+        private readonly DiContainer _diContainer;
 
-		public FactoryService(ServiceConfiguration config, DiContainer context)
-		{
-			_configuration = config as FactoryServiceConfiguration;
-			_diContainer = context;
-		}
+        public FactoryService(ServiceConfiguration config, DiContainer context)
+        {
+            _configuration = config as FactoryServiceConfiguration;
+            _diContainer = context;
+        }
 
-		public T Instantiate<T>(T obj) where T : UnityEngine.Object
-		{
-			return _diContainer.InstantiatePrefabForComponent<T>(obj);
-		}
+        public T Instantiate<T>(T original) where T : Object
+        {
+            return _diContainer.InstantiatePrefabForComponent<T>(original);
+        }
 
-		public T Instantiate<T>(T obj, Transform t) where T : UnityEngine.Object
-		{
-			return _diContainer.InstantiatePrefabForComponent<T>(obj, t);
-		}
+        public T Instantiate<T>(T original, Transform transform) where T : Object
+        {
+            return _diContainer.InstantiatePrefabForComponent<T>(original, transform);
+        }
 
-		public GameObject Instantiate(UnityEngine.Object obj, Transform t)
-		{
-			return _diContainer.InstantiatePrefab(obj, t);
-		}
+        public GameObject Instantiate(Object original, Transform transform)
+        {
+            return _diContainer.InstantiatePrefab(original, transform);
+        }
 
-		public Pooler<T> CreatePool<T>(GameObject prefab, int amount,  Transform poolTransform = null) where T : UnityEngine.Component
-		{
-			return new Pooler<T>(prefab, amount, _diContainer, poolTransform);
-		}
-	}
+        public Pooler<T> CreatePool<T>(Component prefab, int amount, Transform poolTransform = null) where T : Component
+        {
+            return new Pooler<T>(prefab, amount, _diContainer, poolTransform);
+        }
+    }
 }

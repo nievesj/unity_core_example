@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Core.Services.UI;
 using UniRx;
 using UnityEngine;
@@ -13,106 +12,109 @@ namespace CoreDemo
 	public class UIShowOffWindowHud : UIDialog
 	{
 		[SerializeField]
-		private Slider poolSizeSlider;
+		private Slider _poolSizeSlider;
 
 		[SerializeField]
-		private Slider spawningSpeedSlider;
+		private Slider _spawningSpeedSlider;
 
 		/// <summary>
 		/// Signal triggers when the pool speed changes
 		/// </summary>
 		/// <returns></returns>
-		private Subject<float> onSpawningSpeedChanged = new Subject<float>();
-		public IObservable<float> OnSpawningSpeedChanged { get { return onSpawningSpeedChanged; } }
-
+		private readonly Subject<float> _onSpawningSpeedChanged = new Subject<float>();
+	
 		/// <summary>
 		/// Signal triggers when the pool size is reset
 		/// </summary>
 		/// <returns></returns>
-		protected Subject<int> onResetPool = new Subject<int>();
-
-		public IObservable<int> OnResetPool { get { return onResetPool; } }
+		private readonly Subject<int> _onResetPool = new Subject<int>();
 
 		public void BackToTitleOnClick()
 		{
-			if (uiService.IsUIElementOpen(Constants.Screens.UI_RIGHT_WINDOW))
-				uiService.GetOpenUIElement(Constants.Screens.UI_RIGHT_WINDOW).Close().Subscribe();
+			if (UiService.IsUIElementOpen(Constants.UI.RightWindow))
+				UiService.GetOpenUIElement(Constants.UI.RightWindow).Close();
 
-			if (uiService.IsUIElementOpen(Constants.Screens.UI_TOP_WINDOW))
-				uiService.GetOpenUIElement(Constants.Screens.UI_TOP_WINDOW).Close().Subscribe();
+			if (UiService.IsUIElementOpen(Constants.UI.TopWindow))
+				UiService.GetOpenUIElement(Constants.UI.TopWindow).Close();
 
-			if (uiService.IsUIElementOpen(Constants.Screens.UI_BOTTOM_WINDOW))
-				uiService.GetOpenUIElement(Constants.Screens.UI_BOTTOM_WINDOW).Close().Subscribe();
+			if (UiService.IsUIElementOpen(Constants.UI.BottomWindow))
+				UiService.GetOpenUIElement(Constants.UI.BottomWindow).Close();
 
-			Close()
-				.Subscribe(window => { uiService.OpenUIElement(Constants.Screens.UI_TITLE_SCREEN_WINDOW).TaskToObservable().Subscribe();});
+			Close();
 		}
 
 		public void OpenTopWindowOnClick()
 		{
-			if (!uiService.IsUIElementOpen(Constants.Screens.UI_TOP_WINDOW))
+			if (!UiService.IsUIElementOpen(Constants.UI.TopWindow))
 			{
-				if (uiService.IsUIElementOpen(Constants.Screens.UI_RIGHT_WINDOW))
-					uiService.GetOpenUIElement(Constants.Screens.UI_RIGHT_WINDOW).Close().Subscribe();
+				if (UiService.IsUIElementOpen(Constants.UI.RightWindow))
+					UiService.GetOpenUIElement(Constants.UI.RightWindow).Close();
 
-				if (uiService.IsUIElementOpen(Constants.Screens.UI_BOTTOM_WINDOW))
-					uiService.GetOpenUIElement(Constants.Screens.UI_BOTTOM_WINDOW).Close().Subscribe();
+				if (UiService.IsUIElementOpen(Constants.UI.BottomWindow))
+					UiService.GetOpenUIElement(Constants.UI.BottomWindow).Close();
 
-				uiService.OpenUIElement(Constants.Screens.UI_TOP_WINDOW).TaskToObservable().Subscribe();
+				UiService.OpenUI(Constants.UI.TopWindow).TaskToObservable().Subscribe();
 			}
 		}
 
 		public void OpenBottomWindowOnClick()
 		{
-			if (!uiService.IsUIElementOpen(Constants.Screens.UI_BOTTOM_WINDOW))
+			if (!UiService.IsUIElementOpen(Constants.UI.BottomWindow))
 			{
-				if (uiService.IsUIElementOpen(Constants.Screens.UI_RIGHT_WINDOW))
-					uiService.GetOpenUIElement(Constants.Screens.UI_RIGHT_WINDOW).Close().Subscribe();
+				if (UiService.IsUIElementOpen(Constants.UI.RightWindow))
+					UiService.GetOpenUIElement(Constants.UI.RightWindow).Close();
 
-				if (uiService.IsUIElementOpen(Constants.Screens.UI_TOP_WINDOW))
-					uiService.GetOpenUIElement(Constants.Screens.UI_TOP_WINDOW).Close().Subscribe();
+				if (UiService.IsUIElementOpen(Constants.UI.TopWindow))
+					UiService.GetOpenUIElement(Constants.UI.TopWindow).Close();
 
-				uiService.OpenUIElement(Constants.Screens.UI_BOTTOM_WINDOW).TaskToObservable().Subscribe();
+				UiService.OpenUI(Constants.UI.BottomWindow).TaskToObservable().Subscribe();
 			}
 		}
 
 		public void OpenRightWindowOnClick()
 		{
-			if (!uiService.IsUIElementOpen(Constants.Screens.UI_RIGHT_WINDOW))
+			if (!UiService.IsUIElementOpen(Constants.UI.RightWindow))
 			{
-				if (uiService.IsUIElementOpen(Constants.Screens.UI_TOP_WINDOW))
-					uiService.GetOpenUIElement(Constants.Screens.UI_TOP_WINDOW).Close().Subscribe();
+				if (UiService.IsUIElementOpen(Constants.UI.TopWindow))
+					UiService.GetOpenUIElement(Constants.UI.TopWindow).Close();
 
-				if (uiService.IsUIElementOpen(Constants.Screens.UI_BOTTOM_WINDOW))
-					uiService.GetOpenUIElement(Constants.Screens.UI_BOTTOM_WINDOW).Close().Subscribe();
+				if (UiService.IsUIElementOpen(Constants.UI.BottomWindow))
+					UiService.GetOpenUIElement(Constants.UI.BottomWindow).Close();
 
-				uiService.OpenUIElement(Constants.Screens.UI_RIGHT_WINDOW).TaskToObservable().Subscribe();
+				UiService.OpenUI(Constants.UI.RightWindow).TaskToObservable().Subscribe();
 			}
 		}
 
 		public void OnPoolSliderChange(Text text)
 		{
-			text.text = poolSizeSlider.value.ToString();
+			text.text = _poolSizeSlider.value.ToString();
 		}
 
 		public void OnSpawningSpeedSliderChange(Text text)
 		{
-			text.text = string.Format("{0:0.00}", spawningSpeedSlider.value);
-			onSpawningSpeedChanged.OnNext(spawningSpeedSlider.value);
+			text.text = $"{_spawningSpeedSlider.value:0.00}";
+			_onSpawningSpeedChanged.OnNext(_spawningSpeedSlider.value);
+		}
+
+		public IObservable<float> OnSpawningSpeedChanged()
+		{
+			return _onSpawningSpeedChanged;
+		}
+
+		public IObservable<int> OnResetPool()
+		{
+			return _onResetPool;
 		}
 
 		public void CreateResetPool()
 		{
-			onResetPool.OnNext((int)poolSizeSlider.value);
+			_onResetPool.OnNext((int)_poolSizeSlider.value);
 		}
 
 		protected override void OnDestroy()
 		{
-			onResetPool.Dispose();
+			_onResetPool.OnCompleted();
+			_onSpawningSpeedChanged.OnCompleted();
 		}
-
-		protected override void OnElementShow() { }
-
-		protected override void OnElementHide() { }
 	}
 }

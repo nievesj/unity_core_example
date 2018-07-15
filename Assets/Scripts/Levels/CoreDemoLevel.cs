@@ -1,12 +1,12 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Core.Services.Assets;
 using Core.Services.Factory;
 using Core.Services.Levels;
-using Core.Services.UI;
 using UniRx;
+using UniRx.Async;
 using UnityEngine;
-using Zenject;
 
 namespace CoreDemo
 {
@@ -18,9 +18,6 @@ namespace CoreDemo
         [SerializeField]
         private Transform _spawner; //Place where balls are going to spawn from
 
-        [Inject]
-        private FactoryService _factoryService;
-
         private Pooler<Ball> _pooler;
         private float _spawningSpeed = 1; //Default spawning speed
         private Ball _ballPrefab;
@@ -28,29 +25,15 @@ namespace CoreDemo
         private PoolWidget _poolWidget;
         private CancellationTokenSource _tokenSource;
 
-        //Hot observables to be discarded when the object is destroyed
-        private CompositeDisposable _disposables = new CompositeDisposable();
-
-
         protected override void Awake()
         {
             base.Awake();
-
-            //Get service references and subscribe to window events.
-            uiService.OnUIElementClosed.Subscribe(OnUIElementClosed);
-            uiService.OnUIElementOpened.Subscribe(OnUIElementOpened);
-
-            //Define bundle to be requested
-            var bundleNeeded = new BundleRequest(AssetCategoryRoot.Prefabs,
-                Constants.Assets.ASSET_BALL, Constants.Assets.ASSET_BALL, _assetService.Configuration);
-
-            _assetService.GetAndLoadAsset<Ball>(bundleNeeded)
-                .TaskToObservable()
-                .Subscribe(ball =>
+            AssetService.LoadAsset<Ball>(AssetCategoryRoot.Prefabs, Constants.Prefabs.Ball)
+                .Run(ball =>
                 {
                     _ballPrefab = ball;
                     //Initialize pooler, and set the pool to one element
-                    _pooler = _factoryService.CreatePool<Ball>(_ballPrefab.gameObject, 1);
+                    _pooler = FactoryService.CreatePool<Ball>(_ballPrefab, 1);
                 });
         }
 
@@ -58,61 +41,66 @@ namespace CoreDemo
         {
             base.Start();
 
-            //Listen to the OnUIElementClosed event.
-            uiService.OnUIElementClosed.Subscribe(OnUIElementClosed);
-            uiService.OpenUIElement(Constants.Screens.UI_TITLE_SCREEN_WINDOW)
-                .TaskToObservable()
-                .Subscribe(screen =>
-                {
-                    //Open title screen window window
-                    Debug.Log(("Window " + screen.name + " opened.").Colored(Colors.Fuchsia));
-                });
+            //Open UITitleScreenWindow
+            OpenTitleScreen();
 
             //Used to cancel task
             _tokenSource = new CancellationTokenSource();
 
             //runs task on main thread
-            Spawner(1);
+            Spawner(1, _tokenSource.Token);
         }
 
-        private void OnUIElementClosed(UIElement element)
+        private void OpenTitleScreen()
         {
-            //Close widget after UIShowOffWindowHud closes
-            if (element is UIShowOffWindowHud)
-            {
-                if (_poolWidget)
-                    _poolWidget.Close().Subscribe();
-            }
+            UiService.OpenUI<UITitleScreenWindow>(Constants.UI.UITitleScreenWindow)
+                .Run(screen =>
+                {
+                    //Open title screen window window
+                    Debug.Log(("Window " + screen.name + " opened.").Colored(Colors.Fuchsia));
+
+                    screen.OnStartClicked().Subscribe(OnStartClicked).AddTo(this);
+                });
         }
 
-        private void OnUIElementOpened(UIElement window)
+        private void OnStartClicked(UITitleScreenWindow start)
         {
-            //Left panel opened.
-            if (window is UIShowOffWindowHud)
+            start.Close();
+            UiService.OpenUI<UIShowOffWindowHud>(Constants.UI.UIShowOffWindowHud).Run(showOff =>
             {
-                //Listen to OnSpawningSpeedChanged event
-                (window as UIShowOffWindowHud).OnSpawningSpeedChanged
-                    .Subscribe(value =>
-                    {
-                        //When the slider changes, stop spawning, and reset the spawner with the selected time
-                        _tokenSource.Cancel();
-                        Spawner(value);
-                    })
-                    .AddTo(_disposables);
+                showOff.OnClosed().Subscribe(s =>
+                {
+                    OpenTitleScreen();
+                    _poolWidget.Close();
+                }).AddTo(this);
+                OpenWidget(showOff);
+            });
+        }
 
-                //Listen to OnResetPool event
-                (window as UIShowOffWindowHud).OnResetPool
-                    .Subscribe(OnResetPool)
-                    .AddTo(_disposables);
+        private void OpenWidget(UIShowOffWindowHud hud)
+        {
+            //Listen to OnSpawningSpeedChanged event
+            hud.OnSpawningSpeedChanged()
+                .Subscribe(value =>
+                {
+                    //When the slider changes, stop spawning, and reset the spawner with the selected time
+                    _tokenSource.Cancel();
+                    _tokenSource = new CancellationTokenSource();
+                    Spawner(value, _tokenSource.Token);
+                })
+                .AddTo(this);
 
-                uiService.OpenUIElement(Constants.Screens.UI_POOL_WIDGET)
-                    .TaskToObservable()
-                    .Subscribe(asset =>
-                    {
-                        _poolWidget = asset as PoolWidget;
-                        _poolWidget.UpdateWidgetValue(_pooler.SizeLimit, _pooler.ActiveElements);
-                    });
-            }
+            //Listen to OnResetPool event
+            hud.OnResetPool()
+                .Subscribe(OnResetPool)
+                .AddTo(this);
+
+            UiService.OpenUI(Constants.UI.PoolWidget)
+                .Run(asset =>
+                {
+                    _poolWidget = asset as PoolWidget;
+                    _poolWidget.UpdateWidgetValue(_pooler.SizeLimit, _pooler.ActiveElements);
+                });
         }
 
         private void OnResetPool(int size)
@@ -122,13 +110,12 @@ namespace CoreDemo
             _pooler?.ResizePool(size);
         }
 
-        private async Task Spawner(float time)
+        private async Task Spawner(float time, CancellationToken token)
         {
-            while (!_tokenSource.Token.IsCancellationRequested)
+            while (!token.IsCancellationRequested)
             {
-                _tokenSource.Token.ThrowIfCancellationRequested();
                 //wait time
-                await new WaitForSeconds(time);
+                await UniTask.Delay(TimeSpan.FromSeconds(time), cancellationToken: token);
 
                 //get a ball from the pool
                 var ball = _pooler.Pop();
@@ -154,8 +141,6 @@ namespace CoreDemo
                         _poolWidget.UpdateWidgetValue(_pooler.SizeLimit, _pooler.ActiveElements);
                 }
             }
-
-            _tokenSource = new CancellationTokenSource();
         }
 
         protected override void OnDestroy()
@@ -168,9 +153,7 @@ namespace CoreDemo
             }
 
             //unload ball
-            _assetService.UnloadAsset(_ballPrefab.name, true);
-            //cleanup events
-            _disposables.Dispose();
+            AssetService.UnloadAsset(_ballPrefab.name, true);
         }
     }
 }

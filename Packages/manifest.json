@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "com.unity.render-pipelines.lightweight": "1.1.5-preview"
+    "com.unity.render-pipelines.lightweight": "1.1.11-preview",
+    "com.unity.incrementalcompiler": "0.0.42-preview.14",
+    "com.unity.purchasing": "exclude",
+    "com.unity.ads": "exclude"
   }
 }

@@ -537,19 +537,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdf3bd2c4e60450ab21aa428cfa859f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _PauseGameWhenOpen: 0
+  _UiType: 0
   inTransition:
     transitionType: 2
-    tweenType: 32
-    transitionTime: 0.5
+    tweenType: 1
+    transitionTime: 0.3
     transitionSound: {fileID: 0}
   outTransition:
     transitionType: 2
-    tweenType: 32
-    transitionTime: 0.5
+    tweenType: 1
+    transitionTime: 0.3
     transitionSound: {fileID: 0}
-  closeButton: {fileID: 0}
-  poolSizeSlider: {fileID: 114269562039570178}
-  spawningSpeedSlider: {fileID: 114755257039213634}
+  _closeButton: {fileID: 0}
+  _poolSizeSlider: {fileID: 114269562039570178}
+  _spawningSpeedSlider: {fileID: 114755257039213634}
 --- !u!114 &114256632544878368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1270,8 +1272,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 224740959052777734}
   m_HandleRect: {fileID: 224886806955360336}
   m_Direction: 0
-  m_MinValue: 0.3
-  m_MaxValue: 5
+  m_MinValue: 0.01
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:

@@ -1,40 +1,30 @@
 ﻿using Core.Services;
 using Core.Services.Assets;
-using Core.Services.Audio;
-using Core.Services.Levels;
 using UniRx;
 using UnityEngine;
-using Zenject;
 
 namespace CoreDemo
 {
-	public class MyGame : Game
-	{
-		[Inject]
-		private AssetService _assetService;
+    public class MyGame : Game
+    {
+        ///  <summary>
+        /// Global signal emitted when the game starts.
+        ///  </summary>
+        ///  <param name = "unit" />
+        protected override void OnGameStart(Unit unit)
+        {
+            base.OnGameStart(unit);
 
-		[Inject]
-		private AudioService _audioService;
+            AssetService.LoadAsset<CoreDemoLevel>(AssetCategoryRoot.Levels, Constants.Levels.CoreDemoLevel)
+                .Run(level =>
+                {
+                    Debug.Log("MyGame Started.".Colored(Colors.Fuchsia));
 
-		[Inject]
-		private LevelLoaderService _levelLoaderService;
+                    //Load CoreDemoLevel level
+                    Debug.Log(("MyGame | Level " + Constants.Levels.CoreDemoLevel + " loaded.").Colored(Colors.Fuchsia));
 
-		/// <summary>
-		///Global signal emitted when the game starts.
-		/// </summary>
-		/// <param name = "unit" ></ param >
-		protected override void OnGameStart(Unit unit)
-		{
-			base.OnGameStart(unit);
-			_levelLoaderService.LoadLevel(Constants.Levels.CORE_DEMO_LEVEL)
-				.ToObservable()
-				.Subscribe(level =>
-				{
-					Debug.Log(("MyGame Started.").Colored(Colors.Fuchsia));
-
-					//Load CoreDemoLevel level
-					Debug.Log(("MyGame | Level " + Constants.Levels.CORE_DEMO_LEVEL + " loaded.").Colored(Colors.Fuchsia));
-				});
-		}
-	}
+                    var demo = FactoryService.Instantiate(level);
+                });
+        }
+    }
 }

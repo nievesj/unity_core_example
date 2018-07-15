@@ -1,0 +1,12 @@
+{
+    "name": "Zenject.Editor",
+    "references": [
+        "Zenject"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

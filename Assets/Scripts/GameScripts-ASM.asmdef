@@ -2,7 +2,8 @@
     "name": "GameScripts-ASM",
     "references": [
         "CoreFramework-ASM",
-        "Zenject-ASM"
+        "Zenject",
+        "UniRx"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

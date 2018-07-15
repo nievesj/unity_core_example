@@ -160,17 +160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c04a7e181debb4f8a5d8659fc6a89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _PauseGameWhenOpen: 0
+  _UiType: 0
   inTransition:
     transitionType: 4
-    tweenType: 32
-    transitionTime: 0.5
+    tweenType: 1
+    transitionTime: 0.3
     transitionSound: {fileID: 0}
   outTransition:
     transitionType: 4
-    tweenType: 32
-    transitionTime: 0.5
+    tweenType: 1
+    transitionTime: 0.3
     transitionSound: {fileID: 0}
-  closeButton: {fileID: 114327840872237090}
+  _closeButton: {fileID: 114327840872237090}
 --- !u!114 &114722415554896366
 MonoBehaviour:
   m_ObjectHideFlags: 1

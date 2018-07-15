@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.IMGUI.Controls;
 
 namespace AssetBundleBrowser.AssetBundleModel
 {
-    internal class AssetTreeItem : TreeViewItem
+    internal sealed class AssetTreeItem : TreeViewItem
     {
         private AssetInfo m_asset;
         internal AssetInfo asset
@@ -109,11 +110,11 @@ namespace AssetBundleBrowser.AssetBundleModel
             get { return m_DisplayName; }
         }
         internal string bundleName
-        { get { return m_BundleName == "" ? "auto" : m_BundleName; } }
+        { get { return System.String.IsNullOrEmpty(m_BundleName) ? "auto" : m_BundleName; } }
         
         internal Color GetColor()
         {
-            if (m_BundleName == "")
+            if (System.String.IsNullOrEmpty(m_BundleName))
                 return Model.k_LightGrey;
             else
                 return Color.white;
@@ -161,7 +162,7 @@ namespace AssetBundleBrowser.AssetBundleModel
                 messages.Add(new MessageSystem.Message(message, MessageType.Warning));
             }
 
-            if (m_BundleName == string.Empty && m_Parents.Count > 0)
+            if (System.String.IsNullOrEmpty(m_BundleName) && m_Parents.Count > 0)
             {
                 //TODO - refine the parent list to only include those in the current asset list
                 var message = displayName + "\n" + "Is auto included in bundle(s) due to parent(s): \n";
@@ -176,7 +177,8 @@ namespace AssetBundleBrowser.AssetBundleModel
             if (m_dependencies != null && m_dependencies.Count > 0)
             {
                 var message = string.Empty;
-                foreach (var dependent in m_dependencies)
+                var sortedDependencies = m_dependencies.OrderBy(d => d.bundleName);
+                foreach (var dependent in sortedDependencies)
                 {
                     if (dependent.bundleName != bundleName)
                     {

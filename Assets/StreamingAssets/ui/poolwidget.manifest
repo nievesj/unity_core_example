@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 3864440945
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b014fabc77f1acdb9ac6341960efd10b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0a9680ffb2751e74cfcd6f0221e16226
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d814051d3757a194893ea491b6aef438, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/UI/PoolWidget.prefab
+Dependencies: []

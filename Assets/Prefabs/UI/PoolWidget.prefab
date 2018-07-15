@@ -141,15 +141,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d814051d3757a194893ea491b6aef438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _PauseGameWhenOpen: 0
+  _UiType: 0
   inTransition:
     transitionType: 6
     tweenType: 1
-    transitionTime: 0.5
+    transitionTime: 0.3
     transitionSound: {fileID: 0}
   outTransition:
     transitionType: 6
     tweenType: 1
-    transitionTime: 0.5
+    transitionTime: 0.3
     transitionSound: {fileID: 0}
   poolSizeLimitText: {fileID: 114775594963052316}
   activePoolElementsText: {fileID: 114752505693967878}

@@ -1,35 +1,34 @@
 ﻿namespace CoreDemo
 {
-	internal static class Constants
-	{
-		public static class Levels
-		{
-			public const string CORE_DEMO_LEVEL = "CoreDemoLevel";
-			public const string SHOW_OFF_LEVEL = "ShowOffLevel";
-		}
+    internal static class Constants
+    {
+        public static class Levels
+        {
+            public const string CoreDemoLevel = "CoreDemoLevel";
+        }
 
-		public static class Scenes
-		{
-			public const string SCENE_1 = "Scene1";
-			public const string SCENE_2 = "Scene2";
-			public const string SCENE_3 = "Scene3";
-			public const string SCENE_4 = "Scene4";
-			public const string CORE = "CoreGame";
-		}
+        public static class Scenes
+        {
+            public const string Scene1 = "Scene1";
+            public const string Scene2 = "Scene2";
+            public const string Scene3 = "Scene3";
+            public const string Scene4 = "Scene4";
+            public const string CoreGame = "CoreGame";
+        }
 
-		public static class Screens
-		{
-			public const string UI_TITLE_SCREEN_WINDOW = "UITitleScreenWindow";
-			public const string UI_SHOW_OFF_WINDOW_HUD = "UIShowOffWindowHud";
-			public const string UI_TOP_WINDOW = "TopWindow";
-			public const string UI_BOTTOM_WINDOW = "BottomWindow";
-			public const string UI_RIGHT_WINDOW = "RightWindow";
-			public const string UI_POOL_WIDGET = "PoolWidget";
-		}
+        public static class UI
+        {
+            public const string UITitleScreenWindow = "UITitleScreenWindow";
+            public const string UIShowOffWindowHud = "UIShowOffWindowHud";
+            public const string TopWindow = "TopWindow";
+            public const string BottomWindow = "BottomWindow";
+            public const string RightWindow = "RightWindow";
+            public const string PoolWidget = "PoolWidget";
+        }
 
-		public static class Assets
-		{
-			public const string ASSET_BALL = "Ball";
-		}
-	}
+        public static class Prefabs
+        {
+            public const string Ball = "Ball";
+        }
+    }
 }

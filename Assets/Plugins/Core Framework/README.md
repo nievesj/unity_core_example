@@ -1,9 +1,10 @@
-
-
 # Core Framework for Unity
-Current Version 1.3
 
-Supported Unity versions: 2017.3 or latest. 
+Current Version 1.4 - Not backwards compatible with previous versions as the .net runtime was updated to 4.6
+
+Supported Unity versions: 2018.1.0f2. or latest.
+
+If you need to use the old scripting runtime (.net 3.5) then use the [release-1.3 branch](https://github.com/nievesj/unity-core-project/tree/release-1.3).
 
 What is Core Framework?
 ---
@@ -28,17 +29,18 @@ The purpose of Core Framework is to help speed up development in Unity3D by prov
 
 Demo
 ---
-WebGL Demo: [Core Framework Demo](http://www.josemnieves.com/core-framework-demo/) 
+[Example Project](https://github.com/nievesj/unity_core_example)
 
 Purpose
 ---
 The main aspect of this library is loading and unloading asset bundles in a relatively simple way.
 
-    assetService.GetAndLoadAsset<Ball>(bundleRequest)
-			.Subscribe(loadedBall =>
-			{
-				var myBall = GameObject.Instantiate<Ball>(loadedBall);
-			});
+     _assetService.GetAndLoadAsset<Ball>(bundleNeeded)
+                .TaskToObservable()
+                .Subscribe(ball =>
+                {
+                    var myBall = Instantiate<Ball>(ball);
+                });
 
 How to integrate into a project?
 ---
@@ -88,11 +90,12 @@ The service also detects the platform it's running on, and uses that to get the 
 
 This functionality is entirely seamless to the developer, thus requesting an asset is now as easy as:
 
-       assetService.GetAndLoadAsset<Ball>(bundleRequest)
-			.Subscribe(loadedBall =>
-			{
-				var myBall = GameObject.Instantiate<Ball>(loadedBall);
-			});
+       _assetService.GetAndLoadAsset<Ball>(bundleNeeded)
+                .TaskToObservable()
+                .Subscribe(ball =>
+                {
+                    var myBall = Instantiate<Ball>(ball);
+                });
 
 Simulating Asset Bundles
 ---
@@ -125,4 +128,3 @@ This feature allows you to easily colorize debug messages so you can keep track 
 
 
        Debug.Log(("My very awesome lime colored text!").Colored(Colors.Lime));
-

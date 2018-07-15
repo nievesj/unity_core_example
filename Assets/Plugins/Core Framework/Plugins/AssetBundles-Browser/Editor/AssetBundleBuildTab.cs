@@ -90,7 +90,7 @@ namespace AssetBundleBrowser
             file.Close();
 
         }
-        internal void OnEnable(Rect pos, EditorWindow parent)
+        internal void OnEnable(EditorWindow parent)
         {
             m_InspectTab = (parent as AssetBundleBrowserMain).m_InspectTab;
 
@@ -168,11 +168,11 @@ namespace AssetBundleBrowser
             }
         }
 
-        internal void OnGUI(Rect pos)
+        internal void OnGUI()
         {
             m_ScrollPosition = EditorGUILayout.BeginScrollView(m_ScrollPosition);
             bool newState = false;
-            var centeredStyle = GUI.skin.GetStyle("Label");
+            var centeredStyle = new GUIStyle(GUI.skin.GetStyle("Label"));
             centeredStyle.alignment = TextAnchor.UpperCenter;
             GUILayout.Label(new GUIContent("Example build setup"), centeredStyle);
             //basic options
@@ -200,8 +200,7 @@ namespace AssetBundleBrowser
                 EditorGUILayout.Space();
                 GUILayout.BeginHorizontal();
                 var newPath = EditorGUILayout.TextField("Output Path", m_UserData.m_OutputPath);
-                if ( (newPath != m_UserData.m_OutputPath) &&
-                     (newPath != string.Empty) )
+                if (!System.String.IsNullOrEmpty(newPath) && newPath != m_UserData.m_OutputPath)
                 {
                     m_UserData.m_UseDefaultPath = false;
                     m_UserData.m_OutputPath = newPath;
@@ -381,8 +380,9 @@ namespace AssetBundleBrowser
 
             foreach (string filePath in Directory.GetFiles(sourceDirName, "*.*", SearchOption.AllDirectories))
             {
-                string newFilePath = Path.Combine(Path.GetDirectoryName(filePath).Replace(sourceDirName, destDirName),
-                    Path.GetFileName(filePath));
+                var fileDirName = Path.GetDirectoryName(filePath).Replace("\\", "/");
+                var fileName = Path.GetFileName(filePath);
+                string newFilePath = Path.Combine(fileDirName.Replace(sourceDirName, destDirName), fileName);
 
                 File.Copy(filePath, newFilePath, true);
             }
