@@ -1,19 +1,18 @@
 ﻿using Core.Services;
 using Core.Services.Assets;
-using UniRx;
 using UnityEngine;
 
 namespace CoreDemo
 {
     public class MyGame : Game
     {
+        /// <inheritdoc />
         ///  <summary>
         /// Global signal emitted when the game starts.
         ///  </summary>
-        ///  <param name = "unit" />
-        protected override void OnGameStart(Unit unit)
+        protected override void OnGameStart()
         {
-            base.OnGameStart(unit);
+            base.OnGameStart();
 
             AssetService.LoadAsset<CoreDemoLevel>(AssetCategoryRoot.Levels, Constants.Levels.CoreDemoLevel)
                 .Run(level =>
