@@ -51,8 +51,8 @@ The asset bundle directory organization is tied to the enum AssetCategoryRoot:
 		Particles
 	}
 
-![Asset Bundle Organization](http://www.josemnieves.com/unity/images/aborg.PNG)
+![Asset Bundle Organization](http://www.josemnieves.net/unity/images/aborg.PNG)
 
 The service will also automagically detect the platform it's running on, and use that to get the asset bundles from the web in the following order: 
 
-![Cloud Asset Bundle Structure](http://www.josemnieves.com/unity/images/webab.png)
+![Cloud Asset Bundle Structure](http://www.josemnieves.net/unity/images/webab.png)
