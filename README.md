@@ -4,13 +4,12 @@
 What is this?
 ---
 This is an example of a project using the [Core Framework](https://github.com/nievesj/unity-core-project). 
-Works with Unity 2018.1 and above. 
+Works with Unity 2019.1 and above. 
 
 Requirements
 ---
 * .Net 4.5.
 * .Net Standards 2.0
-* Incremental Compiler
 
 Setup
 ---
