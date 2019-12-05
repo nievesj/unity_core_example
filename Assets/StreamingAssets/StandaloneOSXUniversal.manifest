@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 4056895222
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui/uishowoffwindowhud
+      Dependencies: {}
+    Info_1:
+      Name: ui/poolwidget
+      Dependencies: {}
+    Info_2:
+      Name: levels/coredemolevel
+      Dependencies: {}
+    Info_3:
+      Name: prefabs/ball
+      Dependencies: {}
+    Info_4:
+      Name: ui/topwindow
+      Dependencies: {}
+    Info_5:
+      Name: ui/rightwindow
+      Dependencies: {}
+    Info_6:
+      Name: ui/uititlescreenwindow
+      Dependencies: {}
+    Info_7:
+      Name: ui/bottomwindow
+      Dependencies: {}
